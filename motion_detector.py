@@ -8,7 +8,9 @@ from os.path import join
 import numpy as np
 import os
 
-frames_dir = "/home/javier/Videos/Webcam/frames"
+frames_dir = "/home/pi/results/frames_from_video"
+
+frames = os.listdir(frames_dir)
 
 im = Image.open(join(frames_dir,"frame0.jpg"))
 red0, green, blue = im.split()
@@ -37,7 +39,8 @@ def sort_list(l):
 
 frames = sort_list(frames)
 
-print(frames[:3])
+print('frames: ', frames[:30])
+
 movement = []
 for f in frames:
     im = Image.open(join(frames_dir,f))
@@ -50,4 +53,4 @@ for f in frames:
         red_old = red_np
     else:
         red_old = red_np
-movement
+print("\nMovement: ", movement)
